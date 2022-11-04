@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "739788165293",
+    "project_id": "iamnaveenoff-in",
+    "storage_bucket": "iamnaveenoff-in.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:739788165293:android:b9c4acac33717ae1947624",
+        "android_client_info": {
+          "package_name": "com.iamnaveenoff.iamnaveenoff"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "739788165293-vuf6q8049dp50ck71f0p9iup2hpuso4r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.iamnaveenoff.iamnaveenoff",
+            "certificate_hash": "a220bb92eacc29620228e8d323e07a73258d4b75"
+          }
+        },
+        {
+          "client_id": "739788165293-uv1prq5gibhjraem51r50j1rojpvunpp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-jkeBPboodHUYB2oO6CzKHn1MxAtmQeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "739788165293-uv1prq5gibhjraem51r50j1rojpvunpp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
