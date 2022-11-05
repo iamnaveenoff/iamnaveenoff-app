@@ -1,119 +1,121 @@
 import 'package:flutter/material.dart';
+import 'package:iamnaveenoff/screens/hearder.dart';
+import 'package:iamnaveenoff/services/auth_service.dart';
+import 'package:iamnaveenoff/utils/colors.dart';
+import 'package:iamnaveenoff/widget/widgets.dart';
+import 'package:nb_utils/nb_utils.dart';
 
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../services/auth_service.dart';
-
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  static String route() => '/home';
   const HomeScreen({super.key});
 
   @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    const padding = EdgeInsets.fromLTRB(24, 24, 24, 0);
     return Scaffold(
-      body: Container(
-        height: size.height,
-        width: size.width,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF4196E3),
-              Color(0xFF373598),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.centerRight,
-            stops: [0, 0.8],
+      appBar: AppBar(
+        actions: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(FirebaseAuthService().user.photoURL!),
           ),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CircleAvatar(
-              radius: 50,
-              backgroundImage:
-              NetworkImage(FirebaseAuthService().user.photoURL!),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              // height: 150,
-              width: 300,
-              decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 232, 232, 232),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Profile',
-                      style: TextStyle(
-                        color: Colors.blue[900],
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
+        ],
+        title: Text("Hi ${FirebaseAuthService().user.displayName} 👋 ",
+            style: TextStyle(color: appTextColorPrimary, fontSize: 22)),
+        backgroundColor: Colors.transparent,
+      ),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          Container(
+                    width: context.width() - 32,
+                    padding: EdgeInsets.all(20),
+                    margin: EdgeInsets.only(left: 16.0, right: 16, bottom: 16, top: 16),
+                    decoration: boxDecoration(radius: 20, backGroundColor: opPrimaryColor, spreadRadius: 4.0, blurRadius: 10.0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Image.asset('assets/opchip.png', height: 40, width: 40),
+                                Text('Visa', style: boldTextStyle(size: 20, color: Colors.white)),
+                              ],
+                            ),
+                            8.height,
+                            FittedBox(
+                              child: Text(
+                                "**** **** **** " + "1096",
+                                style: boldTextStyle(size: 20, color: Colors.white, letterSpacing: 3, wordSpacing: 2),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                            16.height,
+                          ],
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                FittedBox(
+                                  child: Text(
+                                    'CARDHOLDER',
+                                    style: secondaryTextStyle(color: Colors.white60),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                8.height,
+                                FittedBox(
+                                  child: Text(
+                                    "${FirebaseAuthService().user.displayName}",
+                                    style: primaryTextStyle(color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                FittedBox(
+                                  child: Text(
+                                    'BALANCE',
+                                    style: secondaryTextStyle(color: Colors.white60),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                FittedBox(
+                                  child: Text(
+                                    "5000",
+                                    style: primaryTextStyle(color: Colors.white),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ),
-                  const Divider(),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Name: ${FirebaseAuthService().user.displayName}',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue[900],
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    'Email: ${FirebaseAuthService().user.email}',
-                    style: TextStyle(
-                      color: Colors.blue[900],
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            GestureDetector(
-              onTap: () {
-                FirebaseAuthService().signOut();
-              },
-              child: Container(
-                height: 50,
-                width: 280,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.circular(100),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      'Logout',
-                      style: TextStyle(fontSize: 20, color: Colors.white),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
-        ),
+                  )
+        ],)
       ),
     );
   }

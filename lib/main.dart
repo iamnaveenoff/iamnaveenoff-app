@@ -6,6 +6,8 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:iamnaveenoff/screens/home_screen.dart';
 import 'package:iamnaveenoff/screens/login_screen.dart';
 import 'package:iamnaveenoff/services/auth_service.dart';
+import 'package:iamnaveenoff/utils/routes.dart';
+import 'package:iamnaveenoff/utils/theme.dart';
 
 import 'firebase_options.dart';
 
@@ -34,10 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
+      title: 'iamnaveenoff',
+     theme: appTheme(), 
+      routes: routes,
       home: StreamBuilder<User?>(
         stream: FirebaseAuthService().authState,
         builder: (context, snapshot) {
