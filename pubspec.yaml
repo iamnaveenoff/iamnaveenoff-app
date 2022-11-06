@@ -1,12 +1,12 @@
 name: iamnaveenoff
 description: iamnaveenoff Official App
 
-publish_to: 'none'
+publish_to: "none"
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: ">=2.18.2 <3.0.0"
 
 dependencies:
   firebase_auth: ^4.1.1
@@ -20,6 +20,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   cloud_firestore: ^4.0.4
   nb_utils: ^4.4.8
+  google_fonts: ^3.0.1
+  mobx: ^2.0.3
+  flutter_mobx: ^2.0.1
 
 dev_dependencies:
   flutter_test:
@@ -27,8 +30,12 @@ dev_dependencies:
 
   flutter_lints: ^2.0.0
 
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "images/wallet.png"
 flutter:
   uses-material-design: true
   assets:
-    - assets/g.png
+    - assets/
     - assets/opchip.png
